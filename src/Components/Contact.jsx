@@ -1,96 +1,63 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 
-const Container = styled.div`
-    position: fixed;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    padding: 20px;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+const Contact = () => {
+  const [submitted, setSubmitted] = useState(false);
 
-    form {
-        display: flex;
-        flex-direction: column;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Perform any necessary submission logic here
+    // For demonstration purposes, just set submitted to true
+    setSubmitted(true);
+  };
 
-        label {
-            margin-bottom: 5px;
-        }
-
-        input,
-        textarea {
-            margin-bottom: 10px;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button {
-            padding: 10px 20px;
-            background: #007bff;
-            color: white;
-            border-radius: 4px;
-            border: none;
-            cursor: pointer;
-
-            &:hover {
-                background: #0056b3;
-            }
-        }
-    }
-`;
-
-function Contact() {
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
-    const [submitStatus, setSubmitStatus] = useState('');
-
-    const handleEmailChange = (event) => {
-        setEmail(event.target.value);
-    };
-
-    const handleMessageChange = (event) => {
-        setMessage(event.target.value);
-    };
-
-    function handleSubmit(event) {
-        event.preventDefault();
-        fetch('https://example.com/submit-form', { // Update URL to your backend endpoint
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email, message }),
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    setSubmitStatus('Message sent successfully!');
-                    setEmail('');
-                    setMessage('');
-                } else {
-                    throw new Error(data.error || 'Failed to send message');
-                }
-            })
-            .catch(error => {
-                setSubmitStatus(`Error: ${error.message}`);
-            });
-    }
-
-    return (
-        <Container>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="email">Email:</label>
-                <input type="email" id="email" value={email} onChange={handleEmailChange} required />
-                <label htmlFor="message">Message:</label>
-                <textarea id="message" value={message} onChange={handleMessageChange} required />
-                <button type="submit">Send</button>
+  return (
+    <div style={{ 
+      backgroundImage: 'url("https://images.unsplash.com/photo-1534536281715-e28d76689b4d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")', 
+      backgroundSize: 'cover', 
+      backgroundPosition: 'center',
+      height: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: '20px'
+    }}>
+      <div style={{ textAlign: 'center', marginBottom: '20px', backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '20px', borderRadius: '10px' }}>
+        <h2>Contact Us</h2>
+        {!submitted ? (
+          <>
+            <p>Please feel free to reach out to us with any questions or inquiries.</p>
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <input type="text" placeholder="Your Name" style={inputStyle} />
+              <input type="email" placeholder="Your Email" style={inputStyle} />
+              <textarea placeholder="Your Message" style={{ ...inputStyle, height: '100px' }}></textarea>
+              <button type="submit" style={buttonStyle}>Submit</button>
             </form>
-            {submitStatus && <p>{submitStatus}</p>}
-        </Container>
-    );
-}
+          </>
+        ) : (
+          <p>Your message has been submitted. We'll get back to you soon!</p>
+        )}
+      </div>
+    </div>
+  );
+};
+
+const inputStyle = {
+  width: '100%',
+  padding: '10px',
+  marginBottom: '10px',
+  borderRadius: '5px',
+  border: 'none',
+  backgroundColor: '#f5f5f5',
+};
+
+const buttonStyle = {
+  padding: '10px 20px',
+  backgroundColor: '#007bff',
+  color: '#fff',
+  border: 'none',
+  borderRadius: '5px',
+  cursor: 'pointer',
+};
 
 export default Contact;

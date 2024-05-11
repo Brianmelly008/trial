@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Home() {
   const navigate = useNavigate();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+
 
 
   const handleGetStartedClick = () => {
@@ -15,7 +15,7 @@ function Home() {
     <div className="home-page">
       <header className="header-bg" style={{
         position: 'relative',
-        backgroundImage: "url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+        backgroundImage: "url('https://www.prideinn.co.ke/wp-content/uploads/2024/04/PrideInn_Flamingo_Home.webp')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '100vh',

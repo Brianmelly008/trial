@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   return (
     <nav style={{ 
-      backgroundImage: 'url("https://images.unsplash.com/photo-1595576508898-0ad5c879a061?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")', 
+      backgroundImage: 'url("https://www.prideinn.co.ke/wp-content/webp-express/webp-images/uploads/elementor/thumbs/brand-plaza-scaled-q9cetsplcxnkm8juuhz3rsxh81tkloqbak693q84lc.jpg.webp")', 
       backgroundSize: 'cover', 
       backgroundPosition: 'center',
       height: '100vh',
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
+      justifyContent: 'center', // Center vertically
+      alignItems: 'center', // Center horizontally
       padding: '20px'
     }}>
       <div style={{ textAlign: 'center', marginBottom: '20px' }}>
@@ -23,10 +23,11 @@ const Navbar = () => {
             <Link to="/" style={buttonStyle}>Home</Link>
           </li>
           <li>
-            <Link to="/rooms" style={{ ...buttonStyle, marginLeft: '350px' }}>Rooms</Link>
+            <Link to="/rooms" style={{ ...buttonStyle, marginLeft: '370px' }}>Rooms</Link>
           </li>
         </ul>
       </div>
+      <Link to="/contact" style={{ ...buttonStyle, marginTop: '70px' }}>Contact Us</Link>
     </nav>
   );
 };
@@ -41,4 +42,4 @@ const buttonStyle = {
   cursor: 'pointer',
 };
 
-export default Navbar;
+export default Navbar
